@@ -16,4 +16,4 @@ parada_maquina = st.selectbox('Selecione',['AFIAR FACAS', 'AJUSTE DE FOLGAS', 'A
 'TROCA DE FACA', 'TROCA DE FIO', 'TROCA DE MOLA DO SUPORTE DA PINÇA', 'TROCA DE PROGRAMA',
 'TROCA DE ROLAMENTO', 'TROCA MOLDES LATERAIS', 'TROCA ROLAMENTO DE DISCO', 'NÃO SE APLICA'])
 
-print('mecanico tesye')'s'
+print('mecanico tesye')
