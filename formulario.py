@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 import streamlit as st
 
-caminho_arquivo = "S:\manulatex\Banco de dados - parada de maquina - manulatex.xlsx"
+caminho_arquivo = r"S:\manulatex\Banco de dados - parada de maquina - manulatex.xlsx"
 
 st.title("Controle de parada de máquina")
 with st.form(key = 'formulario', clear_on_submit = True):
