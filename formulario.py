@@ -1,12 +1,16 @@
+import pandas as pd
+import os
+from datetime import datetime
 import streamlit as st
 
+caminho_arquivo = "S:\manulatex\Banco de dados - parada de maquina - manulatex.xlsx"
+
 st.title("Controle de parada de máquina")
-nome_mecanico = st.selectbox('Selecione o nome do mecânico:',['','MICHEL','UILIMI','ANDERSON','TALLES','DOUGLAS','ADILSON','TED','RICARDO'])
-
-nome_maquina = st.selectbox('Qual máquina?',['','B-01', 'B-02', 'B-03', 'B-04', 'B-05', 'B-06', 'B-07', 'B-08', 'B-09', 'B-10', 'B-11',
+with st.form(key = 'formulario', clear_on_submit = True):
+    nome_mecanico = st.selectbox('Selecione o nome do mecânico:',['','MICHEL','UILIMI','ANDERSON','TALLES','DOUGLAS','ADILSON','TED','RICARDO'])
+    nome_maquina = st.selectbox('Qual máquina?',['','B-01', 'B-02', 'B-03', 'B-04', 'B-05', 'B-06', 'B-07', 'B-08', 'B-09', 'B-10', 'B-11',
 'B-12', 'B-13', 'B-14', 'B-15', 'B-16', 'B-17', 'B-18', 'B-19', 'B-20', 'B-21', 'B-22'])
-
-parada_maquina = st.selectbox('Motivo da parada da maquina:',['','AFIAR FACAS', 'AJUSTE DE FOLGAS', 'AJUSTE DE SINCRONIZAÇÃO', 'AJUSTE DO PASSE DO CARRINHO', 
+    parada_maquina = st.selectbox('Motivo da parada da maquina:',['','AFIAR FACAS', 'AJUSTE DE FOLGAS', 'AJUSTE DE SINCRONIZAÇÃO', 'AJUSTE DO PASSE DO CARRINHO', 
 'AJUSTE MOLDES LATERAIS', 'AJUSTE NA BASE DO ELETRODO', 'AJUSTE SUPORTE DE ELETRODO', 'ALARME DE COLIZÃO ACIONADO', 'AMOLAR FACA', 'ARGOLA CRUZANDO',
 'ARGOLA DESCENDO NA FORMAÇÃO', 'BOBINA TRAVADA', 'CAPTURA DOS SENSORES', 'CENTRALIZAÇÃO DA PINÇA INFERIOR', 'CONTROLE DE SOLDA', 
 'EMPILHAMENTO DE MALHA', 'ELETRODO QUEBRADO', 'ENERGIA OSCILANDO', 'FALHA SENSOR ABERTURA DE PORTA', 'FALTA DE ENERGIA', 'LIMAR ELETRODO', 
@@ -15,8 +19,7 @@ parada_maquina = st.selectbox('Motivo da parada da maquina:',['','AFIAR FACAS', 
 'RETIFICA DE FACA', 'SOLDA RUIM', 'TROCA DE AGULHA', 'TROCA DE BUCHA', 'TROCA DE CHAPAS', 'TROCA DE DEDINHO', 'TROCA DE EIXO', 'TROCA DE ELETRODO',
 'TROCA DE FACA', 'TROCA DE FIO', 'TROCA DE MOLA DO SUPORTE DA PINÇA', 'TROCA DE PROGRAMA',
 'TROCA DE ROLAMENTO', 'TROCA MOLDES LATERAIS', 'TROCA ROLAMENTO DE DISCO', 'NÃO SE APLICA'])
-
-peca_trocada = st.selectbox('Qual peça foi trocada?', ['','0OUACIJEUP057.56 - APLICADOR DE BOTAO DE PLASTICO EM LUVAS', '1PCDIVEMBO001 - ROLAMENTO DE ROSCA ESQUERDA', 
+    peca_trocada = st.selectbox('Qual peça foi trocada?', ['','0OUACIJEUP057.56 - APLICADOR DE BOTAO DE PLASTICO EM LUVAS', '1PCDIVEMBO001 - ROLAMENTO DE ROSCA ESQUERDA', 
 '0OUT0082M01A - CONJUNTO DE INSTALACAO DE REBITES PECA INFERIOR', '1PCDIVEMBO002 - ROLAMENTO DE ROSCA DIREITA', 
 '0OUT0083M01A - CONJUNTO DE INSTALACAO DE REBITES PECA SUPERIOR', '1PCDIVEMBO003 - ROLAMENTO RODOBAL', 
 '0OUTPINS.001 - APLICADOR DE BOTAO DE PLASTICO EM LUVAS NOVO', '1PCDIVGALE001 - ROLAMENTO DE DISCO', 
@@ -82,3 +85,6 @@ peca_trocada = st.selectbox('Qual peça foi trocada?', ['','0OUACIJEUP057.56 - A
 '1PCDIVCOS001BR - CONECTOR STANDART DE BOBINA - MODELO (U1X22MM YY)', 'OUTRA', 
 '1PCDIVELC0019883 - ELETRODO', '1PCDIVELEC001 - ELECTROVANNE 24Volt. 00360031', 
 '1PCDIVELE001 - ELETRODO', '1PCDIVELE002BR - TUNGSTENIO 4MM PURO (ELETRODO)','NÃO SE APLICA'])
+
+    enviado = st.form_submit_button('enviar')
+    
