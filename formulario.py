@@ -1,6 +1,5 @@
 import streamlit as st
 from supabase import create_client
-
 # Conexão com Supabase
 url = st.secrets["supabase_url"]
 key = st.secrets["supabase_key"]
@@ -41,7 +40,7 @@ with st.form(key='formulario', clear_on_submit=True):
     '0PCDIVACCO006 - ACOPLAMENTO EIXO VIS A BILLE 14H7', '1PCDIVLIMI007BR - VALVULA REGULADORA DE FLUXO GRLA1/8-QS8D',
     '0PCDIVCLIN001 - ISOLAMENTO PARA ELETRODO', '1PCDIVLIMI008BR - VALVULA PNEUMATICA - MODELO (AC 5/2X1/8 DUPLO SOL.SIST.M)',
     'OUTRA', 'NÃO SE APLICA']  ##############################
-    
+
     peca_1 = st.selectbox('Qual peça foi trocada 1?', lista_pecas)
     quantidade_1 = st.number_input("Quantidade 1", min_value=0, step=1)
 
