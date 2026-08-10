@@ -87,4 +87,31 @@ with st.form(key = 'formulario', clear_on_submit = True):
 '1PCDIVELE001 - ELETRODO', '1PCDIVELE002BR - TUNGSTENIO 4MM PURO (ELETRODO)','NÃO SE APLICA'])
 
     enviado = st.form_submit_button('enviar')
-    
+
+if enviado:
+    if nome_mecanico == '' or nome_maquina == '' or parada_maquina == '':
+        st.warning('Por favor, preencha todos os campos obrigatórios.')
+    else:
+        # Cria um DataFrame com os dados do formulário
+        dados = pd.DataFrame({
+            'Data': [datetime.now().strftime('%d/%m/%Y %H:%M:%S')],
+            'Nome do Mecânico': [nome_mecanico],
+            'Nome da Máquina': [nome_maquina],
+            'Motivo da Parada da Máquina': [parada_maquina],
+            'Peça Trocada': [peca_trocada]
+        })
+
+        # Verifica se o arquivo existe
+        if os.path.exists(caminho_arquivo):
+            # Lê o arquivo existente
+            df_existente = pd.read_excel(caminho_arquivo)
+            # Concatena os novos dados com os existentes
+            df_final = pd.concat([df_existente, dados], ignore_index=True)
+        else:
+            # Se o arquivo não existir, apenas usa os novos dados
+            df_final = dados
+
+        # Salva o DataFrame final no arquivo Excel
+        df_final.to_excel(caminho_arquivo, index=False)
+
+        st.success('Dados enviados com sucesso!')
