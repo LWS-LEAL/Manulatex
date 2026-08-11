@@ -74,5 +74,10 @@ if enviado:
         "OBSERVACAO": observacao,
     }
 
-    supabase.table("Parada_maquina").insert(linha).execute()
-    st.success("Registro salvo com sucesso!")
+    '''supabase.table("Parada_maquina").insert(linha).execute()
+    st.success("dados enviados")'''
+    try:
+        supabase.table("Parada_maquina").insert(linha).execute()
+        st.success("dados enviados")
+    except Exception as e:
+        st.error(f"Erro ao salvar: {e}")
