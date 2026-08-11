@@ -77,7 +77,7 @@ if enviado:
     '''supabase.table("Parada_maquina").insert(linha).execute()
     st.success("dados enviados")'''
     try:
-        supabase.table("Parada_maquina").insert(linha).execute()
+        supabase.table("Parada_maquina").insert(linha, returning="minimal").execute()
         st.success("dados enviados")
     except Exception as e:
         st.error(f"Erro ao salvar: {e}")
